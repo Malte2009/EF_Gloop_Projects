@@ -12,6 +12,8 @@ public class Landeplatzszene{
 
     private GLZylinder landeplatz;
 
+    private GLKugel[] lights;
+
     public Landeplatzszene(){
         kamera  = new GLKamera(800, 600);
         kamera.setzePosition(0, 400, 800);
@@ -23,9 +25,23 @@ public class Landeplatzszene{
 
         //Landeplatz erstellen
 
+        this.landeplatz = new GLZylinder(0, 0, 0, 300, 1);
+        this.landeplatz.drehe(90, 0, 0);
+        this.landeplatz.setzeTextur("img/Feld.jpg");
 
         //Lampen erstellen
 
+        int lightAmount = 20;
+
+        this.lights = new GLKugel[lightAmount];
+
+        for (int i = 0; i < lightAmount; i++) {
+            double x = Math.cos(2 * Math.PI / lightAmount * i) * 280;
+            double z = Math.sin(2 * Math.PI / lightAmount * i) * 280;
+            GLKugel light = new GLKugel(x, 5, z, 10);
+
+            this.lights[i] = light;
+        }
     }
 
     /*
