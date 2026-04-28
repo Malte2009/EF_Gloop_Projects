@@ -75,7 +75,14 @@ public class Landeplatzszene{
      * Mit ESC soll die Methode starteLauflichter1() beendet werden.
      */
     private void starteLauflichter1(){
+        for (GLKugel light : lights) {
+            light.setzeFarbe(1, 1, 0);
+            Sys.warte(1);
+        }
 
+        for (GLKugel light : lights) {
+            light.setzeFarbe(0,0,0);
+        }
     }
 
     /*
