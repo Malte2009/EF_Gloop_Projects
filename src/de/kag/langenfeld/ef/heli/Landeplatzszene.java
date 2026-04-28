@@ -75,13 +75,16 @@ public class Landeplatzszene{
      * Mit ESC soll die Methode starteLauflichter1() beendet werden.
      */
     private void starteLauflichter1(){
-        for (GLKugel light : lights) {
-            light.setzeFarbe(1, 1, 0);
-            Sys.warte(1);
-        }
+        while (!tastatur.esc()) {
+            for (GLKugel light : lights) {
+                light.setzeFarbe(1, 1, 0);
+                Sys.warte(1);
+            }
 
-        for (GLKugel light : lights) {
-            light.setzeFarbe(0,0,0);
+            for (GLKugel light : lights) {
+                light.setzeFarbe(0,0,0);
+                Sys.warte(1);
+            }
         }
     }
 
@@ -94,7 +97,13 @@ public class Landeplatzszene{
      * Mit ESC soll die Methode starteLauflichter2() beendet werden.
      */
     private void starteLauflichter2(){
+        while (!tastatur.esc) {
+            for (let i = 0; i < lights.length; i++) {
+                if (i != 0) lights[i - 1].setzeFarbe(0, 0, 0);
 
+                lights[i].setzeFarbe(0, 0, 0);
+            }
+        }
     }
 
     /*
